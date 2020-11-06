@@ -1,2 +1,4 @@
 # demasscult-blog
-demasscult-blog by glovindan
+blog by glovindan
+
+change config.ini in DB folder
