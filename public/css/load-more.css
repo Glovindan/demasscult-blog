@@ -1,0 +1,36 @@
+@media (min-width:1025px) {
+
+    #load-more:hover {
+        transform: translate(-0.5vh, -0.5vh);
+        background-color: #ffff57;
+        box-shadow: .5vh .5vh 0 rgba(0, 0, 0, 100);
+    }
+
+    #load-more:hover div {
+        filter: invert(1);
+    }
+}
+#load-more-wrapper {
+    height: 10vh;
+}
+#load-more {
+    display: block;
+    margin: auto;
+    width: intrinsic;           /* Safari/WebKit uses a non-standard name */
+    width: -moz-max-content;    /* Firefox/Gecko */
+    width: -webkit-max-content; /* Chrome */
+    height: intrinsic;           /* Safari/WebKit uses a non-standard name */
+    height: -moz-max-content;    /* Firefox/Gecko */
+    height: -webkit-max-content; /* Chrome */
+
+    padding: 1vh;
+    margin-bottom: 3vh;
+}
+#load-more:active {
+    transform: translate(0vh,0vh);
+    background-color: #ffff57;
+    box-shadow: 0px 0px 0 rgba(0, 0, 0, 100);
+}
+#load-more:active :first-child {
+    filter: invert();
+}

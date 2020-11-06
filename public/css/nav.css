@@ -1,0 +1,23 @@
+footer {
+    display: block;
+    position: fixed;
+    bottom: 0;
+    left: 0px;
+    max-height: 30vh;
+
+    min-height: 21vh;
+
+    height: 45vw;
+    width: fit-content;
+}
+.nav-button-container {
+    display: block;
+    height: 33.33%;
+    width: 100%;
+    padding: 1vh;
+}
+#admin {
+    display: block;
+}
+
+

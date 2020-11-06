@@ -1,0 +1,89 @@
+/**************************************/
+/*********** C O L O R S **************/
+/**************************************/
+.dmc-grey {
+    background-color: #a8a8a8;
+}
+.dmc-blue {
+    background-color: #0000a8;
+}
+.dmc-yellow {
+    background-color: #ffff57;
+}
+.dmc-white {
+    background-color: white;
+}
+
+/**************************************/
+/*********** B U T T O N **************/
+/**************************************/
+.dmc-button {
+    display: block;
+    background-color: transparent;
+    padding: 1vh;
+    cursor: pointer;
+
+    height: 100%;
+    width: 100%;
+}
+@media (min-width:1025px) {
+    .dmc-button:hover :first-child {
+        filter: invert();
+    }
+
+    .dmc-button:hover {
+        --shadow: 0.5vh;
+        transform: translate(-0.5vh, -0.5vh);
+        background-color: #ffff57;
+        box-shadow: .5vh .5vh 0 rgba(0, 0, 0, 100);
+    }
+}
+.dmc-button:active {
+    transform: translate(0px,0px);
+    background-color: #ffff57;
+    box-shadow: 0px 0px 0 rgba(0, 0, 0, 100);
+}
+.dmc-button:active :first-child {
+    filter: invert();
+}
+.dmc-button img{
+    height: 100%;
+}
+
+/**************************************/
+/************* F O N T ****************/
+/**************************************/
+.dmc-font {
+    font-family:"MSDOS";
+}
+.white {
+    color: #fff;
+}
+.black {
+    color: black;
+}
+.smaller {
+    font-size: 2vh;
+}
+.small {
+    font-size: 2.5vh;
+}   
+.medium {
+    font-size: 4vh;
+}
+.large {
+    font-size: 5vh;
+}
+.center {
+    text-align: center;
+}
+
+/* 
+O T H E R
+*/
+.dmc-border {
+    border: 0.3vh solid #fff;
+}
+.dmc-noborder {
+    border: 0.3vh solid transparent;
+}

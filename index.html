@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <title>The Blog by Glovindan</title>
+        <link rel="stylesheet" href="public/css/blog.css" />
+        <link rel="stylesheet" href="public/css/load-more.css" />
+        <link rel="stylesheet" href="public/css/nav.css" />
+        <link rel="stylesheet" href="public/css/post-create.css" />
+        <link rel="stylesheet" href="public/css/post.css" />
+        <link rel="stylesheet" href="public/css/profile-nav.css" />
+        <link rel="stylesheet" href="public/css/dmc-elements.css" />
+
+        <script src="public/js/Server.js"></script>
+        <script src="public/js/main.js"></script>
+    </head>
+    <body>
+        <header title="Домой"><h1><a href="../index.html">BLOG</a></h1></header>
+
+        <!-- ПОСТЫ -->
+        <main>
+            <ul id="post-container">
+            </ul>
+
+            <div id="load-more-wrapper">
+                <div id="load-more" class="dmc-button dmc-border dmc-font white medium">
+                    <div class="unselectable">
+                        Загрузить еще
+                    </div>
+                </div>
+            </div>
+        </main>
+        <div id="overlay" class="overlay" style="display:none;"></div>     
+        <!-- КНОПКИ УПРАВЛЕНИЯ -->
+        <footer class="unselectable">
+            <div class="nav-button-container">
+                <div id="admin" class="dmc-button dmc-border " title="Админ-панель">
+                    <img src="public/img/admin.png"/>
+                </div>
+            </div>
+            <div class="nav-button-container">
+                <div id="create" class="dmc-button dmc-border" title="Создать пост">
+                    <img src="public/img/create.png"/>
+                </div>
+            </div>
+            <div class="nav-button-container">
+                <div id="profile" class="dmc-button dmc-border" title="Профиль">
+                    <img src="public/img/profile.png"/>
+                </div>
+            </div>
+        </footer>
+
+        <!-- ФОРМА СОЗДАНИЯ ПОСТА -->
+        <section id="post-create" class="post-create" style="display: none;">
+            <section class="dmc-border">                
+                <div class="title dmc-font large center">
+                    <div class="dmc-blue">
+                        Создать
+                    </div>
+                </div>
+                <textarea name="text" placeholder="Заголовок" id="post-create-title" class="dmc-font black small" cols="30" rows="1"></textarea>
+                <textarea name="text" placeholder="Текст" id="post-create-text" class="dmc-font black small" cols="30" rows="10"></textarea>
+                <textarea name="text" placeholder="Пост код" id="post-create-code" class="dmc-font black small" cols="30" rows="1"></textarea>
+                <div id="post-create-button" class="dmc-grey">
+                    <div class="dmc-button">
+                        <div>
+                            Создать!
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </section>
+
+        <!-- МЕНЮ ПРОФИЛЯ -->
+        <div id="profile-container" class="dmc-border" style="display: none;">
+            <div class="dmc-button dmc-font white medium center dmc-border unselectable">
+                <div>
+                    Профиль
+                </div>
+            </div>
+            <div id="sign-in" class="dmc-button dmc-font white medium center dmc-border unselectable">
+                <div>
+                    Войти
+                </div>
+            </div>
+        </div>
+        <!-- ФОРМА ВХОДА -->
+        <form id="auth-form" class="auth-form dmc-blue dmc-font small" style="display: none;">            
+            <div class="wrapper dmc-border">
+                <div class="title">
+                    <div class="dmc-blue">
+                        Авторизация
+                    </div> 
+                </div>
+                <div class="form-input">
+                    <input id="login-input"" type="text" class="smaller" placeholder="login"/>
+                </div>
+                <div class="form-input">
+                    <input id="password-input" type="password" class="smaller" placeholder="password"/>
+                </div>
+
+                <div class="dmc-grey auth-button-container">
+                    <div id="auth-login-button" class="dmc-button white">
+                        <div>
+                            Войти
+                        </div>
+                    </div>
+                </div>       
+            </div>
+        </form>
+        
+    </body>
+</html>
