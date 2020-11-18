@@ -9,10 +9,17 @@ function router($params) {
     if ($method) {
         $app = new Application();
         switch ($method) { 
+            case 'login': return $app->login($params);
+            case 'logout': return $app->logout($params);
+            case 'registration': return $app->registration($params);
+            
             case 'getPostById': return $app->getPostById($params);
             case 'getLastPosts': return $app->getLastPosts($params);
             case 'getLastPostId': return $app->getLastPostId($params);
             case 'createPost': return $app->createPost($params);
+
+            case 'getUserByPostId': return $app->getUserByPostId($params);
+            case 'getUserPermissionsByToken': return $app->getUserPermissionsByToken($params);
             default: return false;
         }
     }

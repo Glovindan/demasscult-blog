@@ -1,5 +1,7 @@
 class Server {
-    user = null;
+
+    token = null;
+    userPermissions = null;
     async send(method, data) {
         const arr = [];
         for (let key in data) {
@@ -25,7 +27,38 @@ class Server {
         return await this.send('getLastPostId',{});
     }
     
-    async createPost(title,text,code,userId) {
-        return await this.send('createPost',{ title, text, code, userId });
+    async createPost(title,text) {
+        if(this.userPermissions && this.token && this.userPermissions.allowCreatePost) {
+            var token = this.token;
+            return await this.send('createPost',{ title, text, token });
+        } else {
+            return false;
+        }
+        
+    }
+
+    async auth(login, password) {
+        const data = await this.send('login', { login, password });
+        if (data && data.token) {
+            this.token = data.token;
+            this.userPermissions = await this.getUserPermissionsByToken(this.token);
+            console.log(this.token);
+            console.log(this.userPermissions);
+        }
+        return data;
+    }
+    async getUserPermissionsByToken(token) {
+        return await this.send('getUserPermissionsByToken', { token });
+    }
+    async getUserByPostId(id) {
+        return await this.send('getUserByPostId', { id });
+    }
+    logout() {
+        var token = this.token;
+        this.userPermissions = null;
+        return this.send('logout', { token });
+    }
+    registration(login, password) {
+        return this.send('registration', { login, password });
     }
 }

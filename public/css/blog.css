@@ -84,7 +84,7 @@ main {
     display: block;
     position: fixed;
     margin: auto;
-    height: 30vh;
+    height: fit-content;
     width: 50vh;
     text-align: center;
     padding: 2vh;
@@ -97,6 +97,7 @@ main {
 .auth-button-container {
     margin: 0 auto;
     margin-top: 1vh;
+    min-width: fit-content;
     width: 50%;
     height: 20%;
 }
