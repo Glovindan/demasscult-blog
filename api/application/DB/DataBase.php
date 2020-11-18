@@ -23,11 +23,16 @@ class DataBase {
     }
 
     public function createPost($title,$text,$userId) {
-        $query = 'INSERT 
+        $permissions = $this->getUserPermissionsById($userId);
+        if ($permissions->allowCreatePost) {
+            $query = 'INSERT 
                     INTO blog_post(post_title,post_text,user_id)
                     VALUES ("'.$title.'","'.$text.'","'.$userId.'");';                    
-        $result = $this->conn->query($query);
-        return true;
+            $result = $this->conn->query($query);
+            return true;
+        } else {
+            return false;
+        }
     }
 
     public function getLastPostId() {
@@ -50,5 +55,57 @@ class DataBase {
         $result = $this->conn->query($query);
         return mysqli_fetch_all($result, MYSQLI_ASSOC);
         
+    }
+
+    public function getUserByLogin($login) {
+        $query = 'SELECT * FROM blog_user WHERE user_name="' . $login . '"';
+        $result = $this->conn->query($query);
+        return $result->fetch_object();
+    }
+
+    public function getUserByLoginPassword($login, $password) {
+        $query = 'SELECT * 
+                  FROM blog_user 
+                  WHERE user_name="' . $login . '" AND user_password="'.$password.'"';
+        $result = $this->conn->query($query);
+        return $result->fetch_object();
+    }
+
+    public function setUserByLoginPassword($login, $password) {
+        $query = "INSERT INTO blog_user (user_name, user_password, role_id, token ) 
+                  VALUES ('" . $login . "', '" . $password . "', '1','')";
+        $this->conn->query($query);
+        return true;
+    }
+
+    public function getUserByToken($token) {
+        $query = 'SELECT * FROM blog_user WHERE token="'.$token.'"';
+        $result = $this->conn->query($query);
+        return $result->fetch_object();
+    }
+
+    public function updateToken($id, $token) {
+        $query = 'UPDATE blog_user SET token="'.$token.'" WHERE user_id='.$id;
+        $this->conn->query($query);
+        return true;
+    }
+
+    public function getUserByPostId($id) {
+        $query = 'SELECT user_id,user_name,role_id FROM blog_user WHERE user_id IN
+        (SELECT user_id FROM blog_post WHERE post_id = "'.$id.'")';
+        $result = $this->conn->query($query);
+        return $result->fetch_object();
+    }
+
+    public function getUserPermissionsById($userId) {
+        $query = 'SELECT * FROM blog_role WHERE role_id in (SELECT role_id FROM blog_user WHERE user_id = "'.$userId.'")';
+        $result = $this->conn->query($query);
+        return $result->fetch_object();
+    }
+
+    public function getUserPermissionsByToken($token) {
+        $query = 'SELECT * FROM blog_role WHERE role_id in (SELECT role_id FROM blog_user WHERE token = "'.$token.'")';
+        $result = $this->conn->query($query);
+        return $result->fetch_object();
     }
 }

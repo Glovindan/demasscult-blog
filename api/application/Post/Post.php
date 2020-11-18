@@ -15,7 +15,8 @@ class Post {
     public function getLastPostId() { 
         return $this->db->getLastPostId();
     }
-    public function createPost($title,$text,$userId) {
-        return $this->db->createPost($title,$text,$userId);
+    public function createPost($title,$text,$token) {
+        $user = $this->db->getUserByToken($token);
+        return $this->db->createPost($title,$text,$user->user_id);
     }
 }
