@@ -4,10 +4,14 @@ window.onload = function () {
     let id = 1;
     let idMax = 0;
     let postCache = [];
-
+    
     start(id);
     editMenuButtonsContent('unlogged');
     async function start(id) {//начальный метод
+        if (await localStorage.getItem('login') && await localStorage.getItem('password')) {
+            await server.auth(localStorage.getItem('login'),localStorage.getItem('password'));
+            editMenuButtonsContent('logged');
+        }
         await loadPosts(loadCount);
         await showPosts();
     }
@@ -20,9 +24,10 @@ window.onload = function () {
         }
     }
 
-    async function toggleLoadScreen() {//Показывает/скрывает загрузку
-        toggleVisible(document.getElementById('loading'));
+    async function hide(element) {
+        element.style.display = 'none'; 
     }
+    
     function openPost(id) {
         alert(`Post id = ${id}`);
     }
@@ -59,6 +64,22 @@ window.onload = function () {
     }
 
     async function loadPosts(loadCount) {
+        let lastPostId;
+        if(postCache.length == 0) {
+            lastPostId = await server.getLastPostId();
+            var loadedPosts = await server.getLastPosts(lastPostId.post_id + 1, loadCount);
+        } else {
+            lastPostId = postCache[postCache.length - 1].post_id;
+            var loadedPosts = await server.getLastPosts(lastPostId, loadCount);
+        }
+        if(loadedPosts[0] != undefined) {
+            postCache = postCache.concat(loadedPosts);
+        } else {
+            console.log('Постов больше нет');
+        }
+    }   
+
+    async function loadNewPosts(loadCount) {
         let lastPostId;
         if(postCache.length == 0) {
             lastPostId = await server.getLastPostId();
@@ -117,8 +138,16 @@ window.onload = function () {
         container.firstChild.replaceWith(content);
     }
     
+    document.getElementById("overlay").addEventListener('click', async function() {
+        hide(document.getElementById("overlay"));
+        hide(document.getElementById("post-create"));
+        hide(document.getElementById("profile-container"));
+        hide(document.getElementById("auth-form"));
+    })
+
     document.getElementById("profile").addEventListener('click',async function() {
         await toggleVisible(document.getElementById("profile-container"));
+        hide(document.getElementById("auth-form"));
         await toggleVisible(document.getElementById("overlay"));
     });
     

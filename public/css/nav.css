@@ -1,5 +1,6 @@
-footer {
-    display: block;
+.nav-wrapper {
+    display: flex;
+    flex-direction: column-reverse;
     position: fixed;
     bottom: 0;
     left: 0px;
@@ -10,7 +11,35 @@ footer {
     height: 45vw;
     width: fit-content;
 }
+
+.edit-wrapper {
+    display: flex;
+    flex-direction: column-reverse;
+    position: fixed;
+    bottom: 0;
+    right: 0px;
+    max-height: 30vh;
+
+    min-height: 21vh;
+
+    height: 45vw;
+    width: fit-content;
+}
+.edit-button-container {
+    
+    display: block;
+    height: 33.33%;
+    width: 100%;
+    padding: 1vh;
+}
 .nav-button-container {
+    display: block;
+    height: 33.33%;
+    width: 100%;
+    padding: 1vh;
+}
+.nav-button-container {
+    right: 0;
     display: block;
     height: 33.33%;
     width: 100%;

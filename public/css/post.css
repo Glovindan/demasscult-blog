@@ -8,6 +8,21 @@
     box-shadow: 2vh 2vh 0px rgb(0,0,0);
     cursor: pointer;
 }
+.post-open {
+    z-index: 1;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%,-50%);
+
+    word-break: break-word;
+    margin: 5vh 0;
+    background-color: #a8a8a8;
+    height: fit-content;
+    width: 100%;
+    padding: 2.5vh;  
+    box-shadow: 2vh 2vh 0px rgb(0,0,0);
+    cursor: pointer;
+}
 .post-outline {
     height: 100%;
     width: 100%;
