@@ -36,7 +36,7 @@ class Server {
         }
         
     }
-
+    
     async auth(login, password) {
         const data = await this.send('login', { login, password });
         if (data && data.token) {
@@ -44,6 +44,9 @@ class Server {
             this.userPermissions = await this.getUserPermissionsByToken(this.token);
             console.log(this.token);
             console.log(this.userPermissions);
+
+            localStorage.setItem('login',login);
+            localStorage.setItem('password',password);
         }
         return data;
     }
@@ -56,7 +59,10 @@ class Server {
     logout() {
         var token = this.token;
         this.userPermissions = null;
+        localStorage.removeItem('login');
+        localStorage.removeItem('password');
         return this.send('logout', { token });
+        
     }
     registration(login, password) {
         return this.send('registration', { login, password });
