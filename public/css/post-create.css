@@ -13,6 +13,7 @@
 }
 .post-create textarea {
     width: 100%;
+    
     resize: none;   
 }
 .post-create section {
@@ -21,9 +22,11 @@
 }
 
 #post-create-code{
+    font-size: 16px;
     height: 10%;
 }
 #post-create-text {
+    font-size: 16px;
     height: 80%;
 }
 #post-create-button {

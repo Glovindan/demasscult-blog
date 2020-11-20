@@ -2,6 +2,7 @@
 <html>
     <head>
         <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0">
         <title>The Blog by Glovindan</title>
         <link rel="stylesheet" href="public/css/blog.css" />
         <link rel="stylesheet" href="public/css/load-more.css" />
@@ -15,6 +16,7 @@
         <script src="public/js/main.js"></script>
     </head>
     <body>
+        
         <header title="Домой"><h1><a href="../index.html">BLOG</a></h1></header>
 
         <!-- ПОСТЫ -->
@@ -22,8 +24,8 @@
             <ul id="post-container">
             </ul>
 
-            <div id="load-more-wrapper">
-                <div id="load-more" class="dmc-button dmc-border dmc-font white medium">
+            <div id="load-more-wrapper" class="load-more-wrapper">
+                <div id="load-more" class="load-more dmc-border dmc-font white medium">
                     <div class="unselectable">
                         Загрузить еще
                     </div>
@@ -31,6 +33,7 @@
             </div>
 
             <div id="overlay" class="overlay" style="display:none;"></div>     
+
              <!-- ФОРМА СОЗДАНИЯ ПОСТА -->
             <section id="post-create" class="post-create" style="display: none;">
                 <section class="dmc-border">                
@@ -112,18 +115,6 @@
                 </div>
             </div>
             
-            <!-- <div class="edit-wrapper">
-                <div class="edit-button-container">
-                    <div id="edit" class="dmc-button dmc-border" title="Создать пост">
-                        <img src="public/img/create.png"/>
-                    </div>
-                </div>
-                <div class="edit-button-container">
-                    <div id="delete" class="dmc-button dmc-border" title="Создать пост">
-                        <img src="public/img/create.png"/>
-                    </div>
-                </div>
-            </div> -->
         </footer> 
     </body>
 </html>
