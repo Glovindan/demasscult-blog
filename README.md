@@ -1,6 +1,6 @@
 # demasscult-blog
 blog by glovindan
 
-demasscult.ru/glovindan
+demasscult.ru/blog
 
 change config.ini in DB folder
