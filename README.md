@@ -1,3 +1,4 @@
-# demasscult-blog
+#blog
 blog by glovindan
 
+offline now :(
